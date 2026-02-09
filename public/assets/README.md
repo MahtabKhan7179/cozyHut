@@ -19,31 +19,34 @@ This approach will make it easier later to identify any potential bugs.
 - setup vite project
 
 ```sh
-npm create vite@latest comfy-store -- --template react
-cd comfy-store
+npm create vite@latest cozyHut
+cd cozyHut
 ```
 
 - add tailwind
 
 ```sh
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
+npm install tailwindcss @tailwindcss/vite
 ```
 
-- rename to tailwind.config.cjs
 - add following content
 
-tailwind.config.cjs
+vite.config.cjs
 
 ```js
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
+/** 
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+*/
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [
+    react(), 
+    tailwindcss()
+  ],
+})
 ```
 
 - remove App.css
@@ -63,9 +66,7 @@ export default App;
 index.css
 
 ```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 ```
 
 Tailwind directives are instructions that decide how Tailwind CSS creates the styles for your website. They control the global styles, component styles, and utility classes.
