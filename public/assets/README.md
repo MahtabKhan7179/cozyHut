@@ -103,12 +103,11 @@ export default App;
 npm i  -D daisyui@latest @tailwindcss/typography
 ```
 
-tailwind.config.js
+index.css
 
 ```js
-{
- plugins: [require('@tailwindcss/typography'), require('daisyui')],
-}
+@plugin "daisyui";
+@plugin "@tailwindcss/typography";
 ```
 
 ## Install All Libraries
